@@ -3,13 +3,19 @@ package UI;
 import java.util.Scanner;
 
 public class ProductMenu {
-    private final Scanner sc = new Scanner(System.in);
-    private final ProductMenuHandler handler = new ProductMenuHandler(sc);
+    private final Scanner sc;
+    private final ProductMenuHandler handler;
+
+    public ProductMenu() {
+        this.sc = new Scanner(System.in);
+        this.handler = new ProductMenuHandler(sc);
+    }
 
     public void start() {
         while (true) {
             printMenu();
-            int choice = sc.nextInt();
+            int choice = readInt("Choose an option: ");
+
             switch (choice) {
                 case 0:
                     System.out.println("Good Bye!");
@@ -18,7 +24,7 @@ public class ProductMenu {
                     handler.addProduct();
                     break;
                 case 2:
-                    handler.showAll();
+                    handler.showAllMenu();
                     break;
                 case 3:
                     handler.searchMenu();
@@ -32,8 +38,14 @@ public class ProductMenu {
                 case 6:
                     handler.loadFromFile();
                     break;
-                    default:
-                        System.out.println("Invalid Choice!");
+                case 7:
+                    handler.updateProduct();
+                    break;
+                case 8:
+                    handler.deleteProduct();
+                    break;
+                default:
+                    System.out.println("Invalid Choice!");
             }
         }
     }
@@ -47,6 +59,8 @@ public class ProductMenu {
         System.out.println("4. Sort");
         System.out.println("5. Save to file");
         System.out.println("6. Load from file");
+        System.out.println("7. Update product");
+        System.out.println("8. Delete product");
     }
 
     private int readInt(String msg) {

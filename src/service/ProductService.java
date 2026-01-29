@@ -68,9 +68,27 @@ public class ProductService {
         products.sort(Comparator.comparingDouble(p -> p.getPrice()));
     }
 
+    // Update product
+    public void update(Product updated) throws NotFoundException {
+        Product current = findById(updated.getId());
+        current.setName(updated.getName());
+        current.setPrice(updated.getPrice());
+        current.setQuantity(updated.getQuantity());
+    }
+
+    // Delete product by ID
+    public void delete(String id) throws NotFoundException {
+        Product p = findById(id);
+        products.remove(p);
+    }
+
     //replace all product
     public void replaceAll(List<Product> newList) {
         products.clear();
         products.addAll(newList);
+    }
+
+    public List<Product> getAll() {
+        return new ArrayList<>(products);
     }
 }

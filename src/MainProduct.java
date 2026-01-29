@@ -1,5 +1,5 @@
 import model.Product;
-import ui.ProductMenu;
+import UI.ProductMenu;
 
 public class MainProduct extends Product {
     public static void main(String[] args) {
