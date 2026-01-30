@@ -25,7 +25,7 @@ public class ProductMenuHandler {
 
         String id;
         while (true) {
-            System.out.println("Enter Product ID: ");
+            System.out.println("Enter Product ID (PRDxxx): ");
             id = sc.nextLine().trim();
 
             if (!ProductValidator.isValidId(id)) {
