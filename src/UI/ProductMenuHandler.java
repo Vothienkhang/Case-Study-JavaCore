@@ -97,8 +97,19 @@ public class ProductMenuHandler {
             System.out.println("There is no products in the system!");
             return;
         }
+
+        System.out.printf(
+                "%-8s | %-15s | %10s | %8s%n",
+                "ID", "NAME", "PRICE", "QTY"
+        );
+        System.out.println("-----------------------------------------------");
+
         for (Product p : list) {
-            System.out.println(p);
+            System.out.printf("%-8s | %-15s | %10.2f | %8d%n",
+                    p.getId(),
+                    p.getName(),
+                    p.getPrice(),
+                    p.getQuantity());
         }
     }
 
